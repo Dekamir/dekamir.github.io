@@ -1,0 +1,262 @@
+/* #region Root */
+:root {
+    --accent-color-1: #3A7BE0;
+    --accent-color-2: #67A0F8;
+    background-color: black;
+    color: white;
+    font-family: 'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color-scheme: dark;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #5f9de6;
+    background-image: url("images/background-boat_1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.text-link {
+    color: var(--accent-color-1);
+
+    &:hover {
+        color: var(--accent-color-2);
+    }
+}
+
+svg {
+    fill: white;
+}
+
+header {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #00000080;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+}
+
+/* #endregion Root */
+
+#global-menu {
+    display: flex;
+    align-items: center;
+
+    & a {
+        padding: 4px 12px;
+        border-radius: 4px;
+    }
+
+    & a:hover {
+        background-color: #dcdcdc30;
+    }
+}
+
+/* #region Window */
+.window {
+    position: absolute;
+    background: #131313;
+    border-radius: 8px;
+    height: calc(0.75 * (100vh - 36px));
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 0 8px 0 black;
+}
+
+.window-titlebar {
+    display: flex;
+    min-height: 36px;
+    height: 36px;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    cursor: move;
+}
+
+.window-title {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.window-icon {
+    height: 100%;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.window-controls {
+    display: flex;
+    height: 100%;
+    cursor: auto;
+}
+
+.window-control {
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: #dcdcdc30;
+    }
+
+    & svg {
+        width: 16px;
+    }
+}
+
+#window-about_user {
+    & .header {
+        display: flex;
+        align-items: center;
+        padding: 16px 24px;
+        gap: 16px;
+    }
+
+    & .header > .userinfo {
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    & .header > .userpic img {
+        border-radius: 50%;
+        user-select: none;
+    }
+}
+
+.window-body {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+}
+
+.window-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: auto;
+}
+
+.window-content_section {
+    padding: 16px 24px;
+    background: #1c1c1c;
+    gap: 16px;
+    display: flex;
+    flex-direction: column;
+
+    & .section-title {
+        font-style: italic;
+        color: #aaa;
+    }
+
+    & .section-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+
+        & .item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 300px;
+
+            & .title {
+                color: #aaa;
+            }
+        }
+    }
+}
+
+/* #endregion Window */
+
+/*************/
+.resizer {
+    position: absolute;
+    z-index: 1;
+}
+
+.resizer-left,
+.resizer-right {
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    cursor: ew-resize;
+}
+
+.resizer-top,
+.resizer-bottom {
+    left: 0;
+    right: 0;
+    height: 5px;
+    cursor: ns-resize;
+}
+
+.resizer-top {
+    top: 0;
+}
+
+.resizer-bottom {
+    bottom: 0;
+}
+
+.resizer-left {
+    left: 0;
+}
+
+.resizer-right {
+    right: 0;
+}
+
+.resizer-top-left,
+.resizer-top-right,
+.resizer-bottom-left,
+.resizer-bottom-right {
+    width: 16px;
+    height: 16px;
+}
+
+.resizer-top-left {
+    cursor: nwse-resize;
+    top: 0;
+    left: 0;
+}
+
+.resizer-top-right {
+    cursor: nesw-resize;
+    top: 0;
+    right: 0;
+}
+
+.resizer-bottom-left {
+    cursor: nesw-resize;
+    bottom: 0;
+    left: 0;
+}
+
+.resizer-bottom-right {
+    cursor: nwse-resize;
+    bottom: 0;
+    right: 0;
+}
