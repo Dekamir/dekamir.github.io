@@ -71,7 +71,6 @@ header {
     position: absolute;
     background: #131313;
     border-radius: 8px;
-    height: calc(0.75 * (100vh - 36px));
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -120,6 +119,7 @@ header {
 
     & svg {
         width: 16px;
+        height: 16px;
     }
 }
 
@@ -149,7 +149,6 @@ header {
     display: flex;
     flex-direction: column;
     overflow: auto;
-
 }
 
 .window-content {
@@ -188,6 +187,45 @@ header {
         }
     }
 }
+
+.catalogueview-catalogue {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    & .catalogue-item {
+        width: 360px;
+        height: 202px;
+        border-radius: 16px;
+        box-shadow: 0 0 4px #000000aa;
+        transition: outline 100ms;
+        outline: 2px solid #aaaaaa00;
+        overflow: hidden;
+        &:hover {
+            outline: 2px solid #aaaaaa;
+            transition: outline 100ms;
+            & .catalogue_subtext {
+                display: flex;
+                transition: opacity 1000ms;
+                opacity: 1;
+            }
+        }
+    }
+    & .catalogue_subtext {
+        opacity: 0;
+        display: none;
+        height: 36px;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        bottom: 36px;
+        margin-bottom: -36px;
+        transition: opacity 1000ms;
+        text-align: center;
+        background: linear-gradient(to top, #000000ff,  #00000000 100%);
+        text-shadow: 0 2px #000;
+    }
+}
+
 
 /* #endregion Window */
 
