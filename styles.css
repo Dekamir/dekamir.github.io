@@ -239,7 +239,7 @@ header {
 .resizer-right {
     top: 0;
     bottom: 0;
-    width: 5px;
+    width: 4px;
     cursor: ew-resize;
 }
 
@@ -247,7 +247,7 @@ header {
 .resizer-bottom {
     left: 0;
     right: 0;
-    height: 5px;
+    height: 4px;
     cursor: ns-resize;
 }
 
@@ -271,8 +271,8 @@ header {
 .resizer-top-right,
 .resizer-bottom-left,
 .resizer-bottom-right {
-    width: 16px;
-    height: 16px;
+    width: 4px;
+    height: 4px;
 }
 
 .resizer-top-left {
