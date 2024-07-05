@@ -2,7 +2,6 @@ const windowAboutUser = document.querySelector("#window-about_user");
 const titlebar = document.querySelector(".window-titlebar");
 const windowControls = document.querySelector(".window-controls");
 const resizers = windowAboutUser.querySelectorAll(".resizer");
-// let isResizing = false;
 const maximizeControl = document.querySelector(".window-control-maximize");
 
 let isMaximized = false;
@@ -26,12 +25,7 @@ titlebar.addEventListener("mousedown", event => {
     const shiftX = event.clientX - left + marginLeft;
     const shiftY = event.clientY - top + marginTop;
 
-    console.log(`left: ${ left }, top: ${ top }, shiftX: ${ shiftX }, shiftY: ${ shiftY }`);
-
     const onMouseMove = event => {
-        // const LENGTH = 5;
-        // console.log(`pageXY (${ " ".repeat(LENGTH - event.pageX.toString().length) }${ event.pageX }, ${ " ".repeat(LENGTH - event.pageY.toString().length) }${ event.pageY }); shiftXY (${ " ".repeat(LENGTH - shiftX.toString().length) }${ shiftX }, ${ " ".repeat(LENGTH - shiftY.toString().length) }${ shiftY })`);
-
         if (isMaximized) {
             restoreWindowAboutUserDimensions();
             isMaximized = !isMaximized;
@@ -53,7 +47,6 @@ titlebar.addEventListener("mousedown", event => {
 
 resizers.forEach((resizer) => {
     resizer.addEventListener("mousedown", event => {
-        // isResizing = true;
         const currentResizer = event.target;
         const rect = windowAboutUser.getBoundingClientRect();
 
@@ -66,9 +59,6 @@ resizers.forEach((resizer) => {
         const originalMouseY = event.clientY;
 
         const resize = event => {
-            // if (!isResizing) { return; }
-
-            let width, height, x, y;
             const mouseDifferenceX = event.clientX - originalMouseX;
             const mouseDifferenceY = event.clientY - originalMouseY;
 
@@ -111,7 +101,6 @@ resizers.forEach((resizer) => {
         };
 
         const stopResize = event => {
-            // isResizing = false;
             window.removeEventListener("mousemove", resize);
             window.removeEventListener("mouseup", stopResize);
         };
