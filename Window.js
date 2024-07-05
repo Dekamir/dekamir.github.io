@@ -40,9 +40,15 @@ class Window {
         this.isMaximized = false;
         this.storedDimensions = {};
 
+        this.element.addEventListener("mousedown", this.onWindowFocus.bind(this));
         this.titlebar.addEventListener("mousedown", this.onTitlebarMouseDown.bind(this));
         this.resizers.forEach(resizer => resizer.addEventListener("mousedown", this.onResizerMouseDown.bind(this)));
         this.maximize.addEventListener("click", this.onMaximizeClick.bind(this));
+    }
+
+    onWindowFocus(event) {
+        document.querySelectorAll(".window").forEach(window => window.style.zIndex = 0);
+        this.element.style.zIndex = 1;
     }
 
     onTitlebarMouseDown(event) {
