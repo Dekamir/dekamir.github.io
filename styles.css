@@ -275,25 +275,25 @@ header {
 }
 
 .resizer-top-left {
-    cursor: nwse-resize;
     top: 0;
     left: 0;
+    cursor: nwse-resize;
 }
 
 .resizer-top-right {
-    cursor: nesw-resize;
     top: 0;
     right: 0;
+    cursor: nesw-resize;
 }
 
 .resizer-bottom-left {
-    cursor: nesw-resize;
     bottom: 0;
     left: 0;
+    cursor: nesw-resize;
 }
 
 .resizer-bottom-right {
-    cursor: nwse-resize;
     bottom: 0;
     right: 0;
+    cursor: nwse-resize;
 }
