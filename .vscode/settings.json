@@ -1,0 +1,25 @@
+{
+    "editor.formatOnPaste": true,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 500,
+    "js/ts.implicitProjectConfig.target": "ESNext",
+    "files.insertFinalNewline": true,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
+    "javascript.format.semicolons": "insert",
+    "css.format.spaceAroundSelectorSeparator": true,
+    "liveSassCompile.settings.useNewCompiler": true,
+    "liveSassCompile.settings.showOutputWindowOn": "Warning",
+    "liveSassCompile.settings.generateMap": false,
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css"
+        },
+        {
+            "format": "compressed",
+            "extensionName": ".min.css"
+        },
+    ],
+}
