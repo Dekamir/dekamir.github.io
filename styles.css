@@ -18,7 +18,6 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
 }
 
 a {
@@ -51,7 +50,6 @@ header {
 }
 
 /* #endregion Root */
-
 #global-menu {
     display: flex;
     align-items: center;
@@ -192,6 +190,7 @@ header {
     display: flex;
     flex-direction: column;
     gap: 16px;
+
     & .catalogue-item {
         width: 360px;
         height: 202px;
@@ -200,9 +199,11 @@ header {
         transition: outline 100ms;
         outline: 2px solid #aaaaaa00;
         overflow: hidden;
+
         &:hover {
             outline: 2px solid #aaaaaa;
             transition: outline 100ms;
+
             & .catalogue_subtext {
                 display: flex;
                 transition: opacity 1000ms;
@@ -210,6 +211,7 @@ header {
             }
         }
     }
+
     & .catalogue_subtext {
         opacity: 0;
         display: none;
@@ -221,14 +223,12 @@ header {
         margin-bottom: -36px;
         transition: opacity 1000ms;
         text-align: center;
-        background: linear-gradient(to top, #000000ff,  #00000000 100%);
+        background: linear-gradient(to top, #000000ff, #00000000 100%);
         text-shadow: 0 2px #000;
     }
 }
 
-
 /* #endregion Window */
-
 /*************/
 .resizer {
     position: absolute;

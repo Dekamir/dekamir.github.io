@@ -31,12 +31,12 @@ titlebar.addEventListener("mousedown", event => {
     const onMouseMove = event => {
         // const LENGTH = 5;
         // console.log(`pageXY (${ " ".repeat(LENGTH - event.pageX.toString().length) }${ event.pageX }, ${ " ".repeat(LENGTH - event.pageY.toString().length) }${ event.pageY }); shiftXY (${ " ".repeat(LENGTH - shiftX.toString().length) }${ shiftX }, ${ " ".repeat(LENGTH - shiftY.toString().length) }${ shiftY })`);
-        
+
         if (isMaximized) {
             restoreWindowAboutUserDimensions();
             isMaximized = !isMaximized;
         }
-        
+
         windowAboutUser.style.left = event.pageX - shiftX + "px";
         windowAboutUser.style.top = event.pageY - shiftY + "px";
     };
