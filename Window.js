@@ -1,8 +1,10 @@
 class Window {
+    static headerHeight = getComputedStyle(document.querySelector("header")).height;
+
     static fullScreenDimensions = {
         width: "100vw",
-        height: "calc(100vh - 36px)",
-        top: "36px",
+        height: `calc(100vh - ${ this.headerHeight })`,
+        top: this.headerHeight,
         left: 0,
         borderRadius: 0,
     };
