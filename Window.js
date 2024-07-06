@@ -45,7 +45,7 @@ class Window {
         this.element.addEventListener("mousedown", this.onWindowFocus.bind(this));
         this.titlebar.addEventListener("mousedown", this.onTitlebarMouseDown.bind(this));
         this.resizers.forEach(resizer => resizer.addEventListener("mousedown", this.onResizerMouseDown.bind(this)));
-        this.maximize.addEventListener("click", this.onMaximizeClick.bind(this));
+        this.maximize?.addEventListener("click", this.onMaximizeClick.bind(this));
     }
 
     onWindowFocus(event) {
