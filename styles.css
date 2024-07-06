@@ -63,7 +63,7 @@ svg {
 /* #endregion Root */
 
 header {
-    height: 36px;
+    height: 42px;
     display: flex;
     align-items: center;
     gap: 16px;
@@ -74,11 +74,28 @@ header {
     backdrop-filter: blur(5px);
 }
 
-/* #endregion Root */
+.context-menu {
+    display: inline-flex;
+    flex-direction: column;
+    background: #00000080;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 8px 0 black;
+    margin: 4px;
+    & > .item {
+        display: flex;
+        padding: 12px 16px;
+        cursor: default;
+        &:hover {
+            background-color: #d9d9d930;
+        }
+    }
+}
+
 #global-menu {
     display: flex;
     align-items: center;
-
+    padding-left: 6px;
+    flex-grow: 1;
     & a {
         padding: 4px 12px;
         border-radius: 4px;
@@ -87,6 +104,23 @@ header {
     & a:hover {
         background-color: #dcdcdc30;
     }
+}
+
+#system-tray {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 0 16px;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    & a {
+        display: flex;
+    }
+}
+
+#global-menu-logo {
+    display: flex;
+    height: 22px;
 }
 
 /* #region Window */
