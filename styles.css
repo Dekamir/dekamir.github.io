@@ -25,6 +25,30 @@ a {
     color: inherit;
 }
 
+button {
+    font-family: inherit;
+    background-color: #1c1c1c;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    font-size: 12pt;
+    &:hover {
+        background-color: #2c2c2c;
+    }
+    &.cta {
+        background-color: green;
+    }
+    &.ctd {
+        background-color: #903434;
+    }
+    &.ctd:hover {
+        &:hover {
+            background-color: #bb4545;
+        }
+    }
+}
+
 .text-link {
     color: var(--accent-color-1);
 
@@ -36,6 +60,7 @@ a {
 svg {
     fill: white;
 }
+/* #endregion Root */
 
 header {
     height: 36px;
@@ -75,6 +100,7 @@ header {
     box-shadow: 0 0 8px 0 black;
 }
 
+/* #region Window Titlebar */
 .window-titlebar {
     display: flex;
     min-height: 36px;
@@ -120,28 +146,7 @@ header {
         height: 16px;
     }
 }
-
-#window-about_user {
-    & .header {
-        display: flex;
-        align-items: center;
-        padding: 16px 24px;
-        gap: 16px;
-    }
-
-    & .header > .userinfo {
-        display: flex;
-        flex-grow: 1;
-        justify-content: center;
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    & .header > .userpic img {
-        border-radius: 50%;
-        user-select: none;
-    }
-}
+/* #endregion Window Titlebar */
 
 .window-body {
     display: flex;
@@ -185,7 +190,9 @@ header {
         }
     }
 }
+/* #endregion Window */
 
+/* #region Catalogue View */
 .catalogueview-catalogue {
     display: flex;
     flex-direction: column;
@@ -227,9 +234,74 @@ header {
         text-shadow: 0 2px #000;
     }
 }
+/* #endregion Catalogue View */
 
-/* #endregion Window */
-/*************/
+/* #region Window: About User */
+#window-about_user {
+    & .header {
+        display: flex;
+        align-items: center;
+        padding: 16px 24px;
+        gap: 16px;
+    }
+
+    & .header > .userinfo {
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    & .header > .userpic img {
+        border-radius: 50%;
+        user-select: none;
+    }
+}
+/* #endregion Window: About User */
+
+/* #region Window: Framer: Close All Windows */
+#window-close_all_windows {
+    .window-body {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    .window-content {
+        display: flex;
+        flex-direction: row;
+        padding: 16px;
+    }
+}
+.popup-icon_area {
+    display: flex;
+}
+.popup-header {
+    font-size: 18pt;
+    font-weight: 500;
+}
+.popup-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+    gap: 4px;
+}
+.popup-text {
+    color: #aaa;
+}
+.popup-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: flex-end;
+    padding: 16px;
+    gap: 8px;
+
+    height: 36px;
+}
+/* #endregion Window: Framer: Close All Windows */
+
+/* #region Resizer */
 .resizer {
     position: absolute;
 }
@@ -297,3 +369,4 @@ header {
     right: 0;
     cursor: nwse-resize;
 }
+/* #endregion Resizer */
