@@ -210,6 +210,7 @@ header {
     & .section-content {
         display: flex;
         flex-wrap: wrap;
+        flex-direction: column;
         gap: 16px;
 
         & .item {
@@ -229,7 +230,8 @@ header {
 /* #region Catalogue View */
 .catalogueview-catalogue {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 16px;
 
     & .catalogue-item {
