@@ -3,6 +3,7 @@
     --accent-color-1: #3A7BE0;
     --accent-color-2: #67A0F8;
     background-color: black;
+    --text-secondary: #aaaaaa;
     color: white;
     font-family: 'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color-scheme: dark;
@@ -55,6 +56,9 @@ button {
     &:hover {
         color: var(--accent-color-2);
     }
+}
+.text-secondary {
+    color: var(--text-secondary);
 }
 
 svg {
@@ -202,12 +206,12 @@ header {
     display: flex;
     flex-direction: column;
 
-    & .section-title {
+    & > .section-title {
         font-style: italic;
         color: #aaa;
     }
 
-    & .section-content {
+    & > .section-content {
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
