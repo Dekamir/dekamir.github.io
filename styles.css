@@ -99,6 +99,7 @@ header {
     display: flex;
     align-items: center;
     padding-left: 6px;
+    flex-wrap: wrap;
     flex-grow: 1;
     & a {
         padding: 4px 12px;
@@ -110,17 +111,24 @@ header {
     }
 }
 
+
 #system-tray {
     display: flex;
     flex-direction: row-reverse;
     padding: 0 16px;
     gap: 16px;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
     & a {
         display: flex;
     }
+    @media (max-width:512px) {
+        & {
+            display: none;
+        }
+    }
 }
+
 
 #global-menu-logo {
     display: flex;
