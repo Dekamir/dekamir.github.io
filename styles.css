@@ -284,6 +284,33 @@ header {
 }
 /* #endregion Catalogue View */
 
+/* #region Desktop Icons */
+.desktop-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 8px;
+    border-radius: 4px;
+    user-select: none;
+    cursor:default;
+    width: 76px;
+    &:hover {
+        background-color: #67A0F866;
+        outline: #3A7BE066 1px solid;
+    }
+    &:focus {
+        background-color: #67A0F8cc;
+    }
+}
+.desktop-item_icon img {
+    width: 48px;
+    height: 48px;
+}
+.desktop-item_title {
+    text-shadow: 0 1px 1px black;
+}
+/* #endregion Desktop Icons */
+
 /* #region Window: About User */
 #window-about_user {
     & .header {
