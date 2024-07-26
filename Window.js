@@ -10,31 +10,13 @@ class Window {
         borderRadius: 0,
     };
 
-    static setFullScreenDimensions(instance) {
-        instance.element.style.width = Window.fullScreenDimensions.width;
-        instance.element.style.height = Window.fullScreenDimensions.height;
-        instance.element.style.top = Window.fullScreenDimensions.top;
-        instance.element.style.bottom = Window.fullScreenDimensions.bottom;
-        instance.element.style.left = Window.fullScreenDimensions.left;
-        instance.element.style.borderRadius = Window.fullScreenDimensions.borderRadius;
-    }
-
-    static saveDimensions(instance) {
-        instance.storedDimensions.width = instance.element.style.width;
-        instance.storedDimensions.height = instance.element.style.height;
-        instance.storedDimensions.top = instance.element.style.top;
-        instance.storedDimensions.bottom = instance.element.style.bottom;
-        instance.storedDimensions.left = instance.element.style.left;
-        instance.storedDimensions.borderRadius = instance.element.style.borderRadius;
-    }
-
-    static restoreDimensions(instance) {
-        instance.element.style.width = instance.storedDimensions.width;
-        instance.element.style.height = instance.storedDimensions.height;
-        instance.element.style.top = instance.storedDimensions.top;
-        instance.element.style.bottom = instance.storedDimensions.bottom;
-        instance.element.style.left = instance.storedDimensions.left;
-        instance.element.style.borderRadius = instance.storedDimensions.borderRadius;
+    static changeDimensions(a, b) {
+        a.width = b.width;
+        a.height = b.height;
+        a.top = b.top;
+        a.bottom = b.bottom;
+        a.left = b.left;
+        a.borderRadius = b.borderRadius;
     }
 
     constructor(element) {
@@ -70,7 +52,7 @@ class Window {
 
         const onMouseMove = event => {
             if (this.isMaximized) {
-                Window.restoreDimensions(this);
+                Window.changeDimensions(this.element.style, this.storedDimensions);
                 this.isMaximized = !this.isMaximized;
             }
 
@@ -155,11 +137,11 @@ class Window {
 
     onMaximizeClick(event) {
         if (!this.isMaximized) {
-            Window.saveDimensions(this);
-            Window.setFullScreenDimensions(this);
+            Window.changeDimensions(this.storedDimensions, this.element.style);
+            Window.changeDimensions(this.element.style, Window.fullScreenDimensions);
         }
         else {
-            Window.restoreDimensions(this);
+            Window.changeDimensions(this.element.style, this.storedDimensions);
         }
 
         this.isMaximized = !this.isMaximized;
