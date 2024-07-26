@@ -8,6 +8,7 @@
     font-family: 'IBM Plex Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color-scheme: dark;
     overflow: hidden;
+    --taskbar-height: 48px;
 }
 
 body {
@@ -66,19 +67,6 @@ svg {
 }
 /* #endregion Root */
 
-/* #region Topbar */
-header {
-    height: 42px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    background: #00000080;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    backdrop-filter: blur(5px);
-}
-
 .context-menu {
     display: inline-flex;
     flex-direction: column;
@@ -113,33 +101,16 @@ header {
 }
 
 
-#system-tray {
-    display: flex;
-    flex-direction: row-reverse;
-    padding: 0 16px;
-    gap: 16px;
-    align-items: center;
-    justify-content: right;
-    & a {
-        display: flex;
-    }
-    @media (max-width:512px) {
-        & {
-            display: none;
-        }
-    }
-}
 
 
-#global-menu-logo {
+#start-logo {
     display: flex;
     height: 22px;
 }
-/* #endregion Topbar */
 
 /* #region Taskbar */
 footer {
-    height: 56px;
+    height: var(--taskbar-height);
     width: 100%;
     display: flex;
     align-items: center;
@@ -154,15 +125,15 @@ footer {
         flex-grow: 1;
         & #start-button {
             display: flex;
-            height: 56px;
             width: 56px;
+            height: var(--taskbar-height);
             align-items: center;
             justify-content: center;
             transition: background-color 70ms ease-out;
             &:hover {
                     background-color: rgba(128, 128, 128, 0.4);
                     transition: background-color 0ms ease-out;
-                }
+            }
         }
     }
     & #tasklist {
@@ -187,7 +158,7 @@ footer {
                 &:hover {
                         background-color: rgba(128, 128, 128, 0.6);
                         transition: background-color 0ms ease-out;
-                    }
+                }
             }
             & .desktop-item_icon img {
                 width: 32px;
@@ -200,6 +171,7 @@ footer {
         gap: 2px;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         & .system-time {
             font-size: 10pt;
         }
@@ -208,7 +180,51 @@ footer {
         }
     }
 }
+#system-tray {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: right;
+
+    & a {
+        display: flex;
+        align-items: center;
+        padding: 0 4px;
+        height: var(--taskbar-height);
+        transition: background-color 70ms ease-out;
+
+        &:hover {
+            background-color: rgba(128, 128, 128, 0.4);
+            transition: background-color 0ms ease-out;
+        }
+    }
+
+    @media (max-width:512px) {
+        & {
+            display: none;
+        }
+    }
+}
+#show-desktop-button {
+    display: flex;
+    width: 2px;
+    height: var(--taskbar-height);
+}
 /* #endregion Taskbar */
+
+/* #region Start Menu */
+#start-menu {
+    height: var(--taskbar-height);
+    width: 500px;
+    border-radius: 0 4px 0 0;
+    display: flex;
+    align-items: center;
+    background: #00000080;
+    bottom: var(--taskbar-height);
+    position: absolute;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
 
 /* #region Window */
 .window {
