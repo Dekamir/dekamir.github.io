@@ -1,10 +1,11 @@
 class Window {
-    static headerHeight = getComputedStyle(document.querySelector("header")).height;
+    static footerHeight = getComputedStyle(document.querySelector("footer")).height;
 
     static fullScreenDimensions = {
         width: "100vw",
-        height: `calc(100vh - ${ this.headerHeight })`,
-        top: this.headerHeight,
+        height: `calc(100vh - ${ this.footerHeight })`,
+        top: 0,
+        bottom: this.footerHeight,
         left: 0,
         borderRadius: 0,
     };
@@ -13,6 +14,7 @@ class Window {
         instance.element.style.width = Window.fullScreenDimensions.width;
         instance.element.style.height = Window.fullScreenDimensions.height;
         instance.element.style.top = Window.fullScreenDimensions.top;
+        instance.element.style.bottom = Window.fullScreenDimensions.bottom;
         instance.element.style.left = Window.fullScreenDimensions.left;
         instance.element.style.borderRadius = Window.fullScreenDimensions.borderRadius;
     }
@@ -21,6 +23,7 @@ class Window {
         instance.storedDimensions.width = instance.element.style.width;
         instance.storedDimensions.height = instance.element.style.height;
         instance.storedDimensions.top = instance.element.style.top;
+        instance.storedDimensions.bottom = instance.element.style.bottom;
         instance.storedDimensions.left = instance.element.style.left;
         instance.storedDimensions.borderRadius = instance.element.style.borderRadius;
     }
@@ -29,6 +32,7 @@ class Window {
         instance.element.style.width = instance.storedDimensions.width;
         instance.element.style.height = instance.storedDimensions.height;
         instance.element.style.top = instance.storedDimensions.top;
+        instance.element.style.bottom = instance.storedDimensions.bottom;
         instance.element.style.left = instance.storedDimensions.left;
         instance.element.style.borderRadius = instance.storedDimensions.borderRadius;
     }
