@@ -56,8 +56,8 @@ class Window {
                 this.isMaximized = !this.isMaximized;
             }
 
-            this.element.style.left = event.pageX - shiftX + "px";
-            this.element.style.top = event.pageY - shiftY + "px";
+            this.element.style.left = `${ event.pageX - shiftX }px`;
+            this.element.style.top = `${ event.pageY - shiftY }px`;
         };
         const onMouseUp = event => {
             document.removeEventListener("mousemove", onMouseMove);
