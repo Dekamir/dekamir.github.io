@@ -131,8 +131,8 @@ footer {
             justify-content: center;
             transition: background-color 70ms ease-out;
             &:hover {
-                    background-color: rgba(128, 128, 128, 0.4);
-                    transition: background-color 0ms ease-out;
+                background-color: rgba(128, 128, 128, 0.4);
+                transition: background-color 0ms ease-out;
             }
         }
     }
@@ -156,8 +156,8 @@ footer {
                 background-color: rgba(128, 128, 128, 0.5);
                 transition: background-color 70ms ease-out;
                 &:hover {
-                        background-color: rgba(128, 128, 128, 0.6);
-                        transition: background-color 0ms ease-out;
+                    background-color: rgba(128, 128, 128, 0.6);
+                    transition: background-color 0ms ease-out;
                 }
             }
             & .desktop-item_icon img {
@@ -383,7 +383,7 @@ footer {
     padding: 8px 8px;
     border-radius: 4px;
     user-select: none;
-    cursor:default;
+    cursor: default;
     width: 76px;
     &:hover {
         background-color: #67A0F866;
