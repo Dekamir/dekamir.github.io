@@ -472,7 +472,8 @@ footer {
     position: absolute;
 }
 
-.window.maximized .resizer {
+.window.maximized .resizer,
+.window.moving .resizer {
     display: none;
 }
 

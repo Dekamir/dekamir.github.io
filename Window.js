@@ -47,36 +47,39 @@ class Window {
         let shiftY = event.clientY + 1 - top + marginTop;
 
         const onMouseMove = event => {
-            if (this.element.classList.contains("maximized")) {
-                const fullRectWidth = this.element.getBoundingClientRect().width;
-                const controlsRectWidth = this.controls.getBoundingClientRect().width;
-                const titleRectWidth = Array.from(this.titlebar.querySelectorAll(".window-title > *"))
-                    .reduce((width, elem) => width + elem.getBoundingClientRect().width, 0);
-                const fullWidth = fullRectWidth - controlsRectWidth - titleRectWidth;
-                const fullRatio = (event.clientX + 1 - titleRectWidth) / fullWidth;
+            this.element.classList.add("moving");
 
-                this.element.style.width = this.storedDimensions.width;
-                this.element.style.height = this.storedDimensions.height;
-                this.element.style.borderRadius = this.storedDimensions.borderRadius;
-                this.element.style.top = Window.fullScreenDimensions.top;
-
-                const smallRectWidth = this.element.getBoundingClientRect().width;
-                const smallWidth = smallRectWidth - controlsRectWidth - titleRectWidth;
-                const left = Math.ceil(Math.max(event.clientX + 1 - titleRectWidth - fullRatio * smallWidth, 0));
-                this.element.style.left = `${ left }px`;
-                
-                shiftX -= left;
-
-                this.element.classList.toggle("maximized")
-            }
-            else {
+            if (!this.element.classList.contains("maximized")) {
                 this.element.style.left = `${ event.pageX + 1 - shiftX }px`;
                 this.element.style.top = `${ event.pageY + 1 - shiftY }px`;
+                return;
             }
+
+            const fullRectWidth = this.element.getBoundingClientRect().width;
+            const controlsRectWidth = this.controls.getBoundingClientRect().width;
+            const titleRectWidth = Array.from(this.titlebar.querySelectorAll(".window-title > *"))
+                .reduce((width, elem) => width + elem.getBoundingClientRect().width, 0);
+            const fullWidth = fullRectWidth - controlsRectWidth - titleRectWidth;
+            const fullRatio = (event.clientX + 1 - titleRectWidth) / fullWidth;
+
+            this.element.style.width = this.storedDimensions.width;
+            this.element.style.height = this.storedDimensions.height;
+            this.element.style.borderRadius = this.storedDimensions.borderRadius;
+            this.element.style.top = Window.fullScreenDimensions.top;
+
+            const smallRectWidth = this.element.getBoundingClientRect().width;
+            const smallWidth = smallRectWidth - controlsRectWidth - titleRectWidth;
+            const left = Math.ceil(Math.max(event.clientX + 1 - titleRectWidth - fullRatio * smallWidth, 0));
+            this.element.style.left = `${ left }px`;
+
+            shiftX -= left;
+
+            this.element.classList.toggle("maximized");
         };
         const onMouseUp = event => {
             document.removeEventListener("mousemove", onMouseMove);
             document.removeEventListener("mouseup", onMouseUp);
+            this.element.classList.remove("moving");
         };
 
         document.addEventListener("mousemove", onMouseMove);
@@ -159,7 +162,7 @@ class Window {
             Window.changeDimensions(this.element.style, Window.fullScreenDimensions);
         }
 
-        this.element.classList.toggle("maximized")
+        this.element.classList.toggle("maximized");
 
         event.preventDefault();
     }
