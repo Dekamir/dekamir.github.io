@@ -5,7 +5,6 @@ class Window {
         width: "100vw",
         height: `calc(100vh - ${ this.footerHeight })`,
         top: 0,
-        bottom: this.footerHeight,
         left: 0,
         borderRadius: 0,
     };
@@ -14,7 +13,6 @@ class Window {
         a.width = b.width;
         a.height = b.height;
         a.top = b.top;
-        a.bottom = b.bottom;
         a.left = b.left;
         a.borderRadius = b.borderRadius;
     }
