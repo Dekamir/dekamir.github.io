@@ -23,7 +23,6 @@ class Window {
         this.controls = element.querySelector(".window-controls");
         this.resizers = element.querySelectorAll(".resizer");
         this.maximize = element.querySelector(".window-control-maximize");
-        this.isMaximized = false;
         this.storedDimensions = {};
 
         this.element.addEventListener("mousedown", this.onWindowFocus.bind(this));
@@ -48,7 +47,7 @@ class Window {
         let shiftY = event.clientY + 1 - top + marginTop;
 
         const onMouseMove = event => {
-            if (this.isMaximized) {
+            if (this.element.classList.contains("maximized")) {
                 const fullRectWidth = this.element.getBoundingClientRect().width;
                 const controlsRectWidth = this.controls.getBoundingClientRect().width;
                 const titleRectWidth = Array.from(this.titlebar.querySelectorAll(".window-title > *"))
@@ -68,7 +67,7 @@ class Window {
                 
                 shiftX -= left;
 
-                this.isMaximized = !this.isMaximized;
+                this.element.classList.toggle("maximized")
             }
             else {
                 this.element.style.left = `${ event.pageX + 1 - shiftX }px`;
@@ -152,15 +151,15 @@ class Window {
     }
 
     onMaximizeClick(event) {
-        if (!this.isMaximized) {
+        if (this.element.classList.contains("maximized")) {
+            Window.changeDimensions(this.element.style, this.storedDimensions);
+        }
+        else {
             Window.changeDimensions(this.storedDimensions, this.element.style);
             Window.changeDimensions(this.element.style, Window.fullScreenDimensions);
         }
-        else {
-            Window.changeDimensions(this.element.style, this.storedDimensions);
-        }
 
-        this.isMaximized = !this.isMaximized;
+        this.element.classList.toggle("maximized")
 
         event.preventDefault();
     }
