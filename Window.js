@@ -43,19 +43,37 @@ class Window {
 
         const marginLeft = parseInt(getComputedStyle(this.element).marginLeft, 10);
         const marginTop = parseInt(getComputedStyle(this.element).marginTop, 10);
-        const left = this.element.getBoundingClientRect().left;
-        const top = this.element.getBoundingClientRect().top;
-        const shiftX = event.clientX - left + marginLeft;
-        const shiftY = event.clientY - top + marginTop;
+        const { left, top } = this.element.getBoundingClientRect();
+        let shiftX = event.clientX + 1 - left + marginLeft;
+        let shiftY = event.clientY + 1 - top + marginTop;
 
         const onMouseMove = event => {
             if (this.isMaximized) {
-                Window.changeDimensions(this.element.style, this.storedDimensions);
+                const fullRectWidth = this.element.getBoundingClientRect().width;
+                const controlsRectWidth = this.controls.getBoundingClientRect().width;
+                const titleRectWidth = Array.from(this.titlebar.querySelectorAll(".window-title > *"))
+                    .reduce((width, elem) => width + elem.getBoundingClientRect().width, 0);
+                const fullWidth = fullRectWidth - controlsRectWidth - titleRectWidth;
+                const fullRatio = (event.clientX + 1 - titleRectWidth) / fullWidth;
+
+                this.element.style.width = this.storedDimensions.width;
+                this.element.style.height = this.storedDimensions.height;
+                this.element.style.borderRadius = this.storedDimensions.borderRadius;
+                this.element.style.top = Window.fullScreenDimensions.top;
+
+                const smallRectWidth = this.element.getBoundingClientRect().width;
+                const smallWidth = smallRectWidth - controlsRectWidth - titleRectWidth;
+                const left = Math.ceil(Math.max(event.clientX + 1 - titleRectWidth - fullRatio * smallWidth, 0));
+                this.element.style.left = `${ left }px`;
+                
+                shiftX -= left;
+
                 this.isMaximized = !this.isMaximized;
             }
-
-            this.element.style.left = `${ event.pageX - shiftX }px`;
-            this.element.style.top = `${ event.pageY - shiftY }px`;
+            else {
+                this.element.style.left = `${ event.pageX + 1 - shiftX }px`;
+                this.element.style.top = `${ event.pageY + 1 - shiftY }px`;
+            }
         };
         const onMouseUp = event => {
             document.removeEventListener("mousemove", onMouseMove);
