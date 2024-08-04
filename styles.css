@@ -547,3 +547,7 @@ footer {
     cursor: nwse-resize;
 }
 /* #endregion Resizer */
+
+.pswp__dynamic-caption a {
+    text-decoration: underline;
+}
