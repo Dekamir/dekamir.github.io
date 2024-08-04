@@ -266,6 +266,9 @@ footer {
     display: flex;
     height: 100%;
     cursor: auto;
+    .window.moving & {
+        cursor: move;
+    }
 }
 
 .window-control {
@@ -276,6 +279,9 @@ footer {
 
     &:hover {
         background-color: #dcdcdc30;
+        .window.moving & {
+            background-color: transparent;
+        }
     }
 
     & svg {
