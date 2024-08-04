@@ -1,5 +1,6 @@
 class Window {
     static footerHeight = getComputedStyle(document.querySelector("footer")).height;
+    static zIndexes = {};
 
     static fullScreenDimensions = {
         width: "100vw",
@@ -32,8 +33,25 @@ class Window {
     }
 
     onWindowFocus(event) {
-        document.querySelectorAll(".window").forEach(window => window.style.zIndex = 0);
-        this.element.style.zIndex = 1;
+        const maxZIndex = Object.keys(Window.zIndexes).length;
+
+        if (Window.zIndexes[this.element.id] === undefined) {
+            Window.zIndexes[this.element.id] = maxZIndex + 1;
+        }
+        else {
+            const currentZIndex = Window.zIndexes[this.element.id];
+            Object.entries(Window.zIndexes).forEach(([id, zIndex]) => {
+                if (id !== this.element.id && zIndex > currentZIndex) {
+                    Window.zIndexes[id] -= 1;
+                }
+            });
+
+            Window.zIndexes[this.element.id] = maxZIndex;
+        }
+
+        Object.entries(Window.zIndexes).forEach(([id, zIndex]) => {
+            document.querySelector(`#${ id }`).style.zIndex = zIndex;
+        });
     }
 
     onTitlebarMouseDown(event) {
